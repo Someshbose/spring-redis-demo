@@ -1,9 +1,24 @@
 package someshbose.github.io.springcache.model;
 
-public class Book {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+public class Book implements Serializable {
+
+    private static final long serialVersionUID = 7156260L;
+
+    @Id
+    @SequenceGenerator(name = "SEQ_GEN",sequenceName = "SEQ_USER",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "SEQ_GEN")
+    private Long id;
 
     private String isbn;
     private String title;
+
+    public Book(){
+
+    }
 
     public Book(String isbn, String title) {
         this.isbn = isbn;
